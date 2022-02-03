@@ -244,6 +244,7 @@ public class ExtractorTab implements ITab {
 				"make customizations to those regex strings, you can! Just make sure that you escape characters that " +
 				"are have special regex meaning. That seems to be anything in this list, though there may be " +
 				"something missing: !$^&*()-+{[}]|\\:,.?</p></body></html>");
+		highlightInstructions.putClientProperty("html.disable", null);
 		helpScrollPanel.add(highlightInstructions);
 
 		// Add scope instructions
@@ -251,24 +252,28 @@ public class ExtractorTab implements ITab {
 		scopeTitle.setBorder(new EmptyBorder(5,5,5,5));
 		scopeTitle.setFont(this.boldFont);
 		helpScrollPanel.add(scopeTitle);
-		helpScrollPanel.add(new JLabel("<html><body style='width: 475px'><p>Users can define scope using both " +
+		JLabel scopeInstructions = new JLabel("<html><body style='width: 475px'><p>Users can define scope using both " +
 				"the host and the tools to target. Either a user can select \"Use suite scope\" which will cause Extractor to " +
 				"examine a request if it is in Burp Suite's scope. Otherwise, the \"Target host\" field will be " +
 				"examined, and a message from a matching host will cause Extractor to examine it." +
 				"</p><p>Use the \"Select in-scope tools\" button to select the tools that Extractor will " +
-				"examine for matching tokens.</p></body></html>"));
+				"examine for matching tokens.</p></body></html>");
+		scopeInstructions.putClientProperty("html.disable", null);
+		helpScrollPanel.add(scopeInstructions);
 
 		// Running Extractor
 		JLabel runningTitle = new JLabel("Running Extractor");
 		runningTitle.setBorder(new EmptyBorder(5,5,5,5));
 		runningTitle.setFont(this.boldFont);
 		helpScrollPanel.add(runningTitle);
-		helpScrollPanel.add(new JLabel("<html><body style='width:475px'><p>To start altering requests with " +
+		JLabel extractorInstructions = new JLabel("<html><body style='width:475px'><p>To start altering requests with " +
 				"Extractor, just click \"Turn Extractor on\". Extractor will begin examining in-scope requests and " +
 				"responses for text which matches the before and after regex fields. Once Extractor " +
 				"has found a match in a response, it will save the text, and write it to the selected location in the " +
 				"request. Multiple Extractor tabs can be used at once, and will execute in the order they were created." +
-				"</p></body></html>"));
+				"</p></body></html>");
+		extractorInstructions.putClientProperty("html.disable", null);
+		helpScrollPanel.add(extractorInstructions);
 
 		return helpPanel;
 	}
